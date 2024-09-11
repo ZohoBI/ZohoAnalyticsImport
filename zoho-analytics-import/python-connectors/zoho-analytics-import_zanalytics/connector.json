@@ -1,0 +1,43 @@
+{
+    "meta" : {
+        "label": "Zoho Analytics",
+        "description": "Retrieve your table data from Zoho Analytics",
+        "icon": "icon-puzzle-piece"
+    },
+    "readable": true,
+    "writable": false,
+    "paramsPythonSetup": "choices.py",
+    "params": [
+        {
+            "name": "zanalytics_connection",
+            "label": "Zoho Analytics Credentials",
+            "type": "PRESET",
+            "parameterSetId": "zoho-analytics-credentials"
+        },
+       
+        {
+            "type": "SELECT",
+            "name": "org_id",
+            "label": "Choose your Zoho Analytics Organisation",
+            "description": "The Organisation you want to retrieve from Zoho Analytics",
+            "getChoicesFromPython": true,
+            "triggerParameters":["zanalytics_connection"]
+        },
+        {
+            "type": "SELECT",
+            "name": "workspace_id",
+            "label": "Choose your Workspace",
+            "description": "The Workspace you want to retrieve from Zoho Analytics",
+            "getChoicesFromPython": true,
+            "triggerParameters":["org_id"]
+        },
+        {
+            "type": "SELECT",
+            "name": "dataset_id",
+            "label": "Choose your table",
+            "description": "The specific table inside of that workspace",
+            "getChoicesFromPython": true,
+            "triggerParameters":["workspace_id"]
+        }
+    ]
+}
